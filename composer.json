@@ -1,5 +1,5 @@
 {
-  "name": "mpazaran-adobe-commerce/mau-core",
+  "name": "mpazaran/mau-core",
   "description": "Magento 2 module swiss knife",
   "require": {
     "php": "~7.1.0"
