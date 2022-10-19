@@ -1,0 +1,65 @@
+
+.actions-toolbar {
+    margin-bottom: 10px;
+}
+
+.button-icon-negative:before {
+    color: #93520F;
+    border: 1px solid #93520F;
+    padding: 3px;
+    margin: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+.button-icon-positive:before {
+    color: #0F5293;
+    border: 1px solid #0F5293;
+    padding: 3px;
+    margin: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+.button-icon-disabled:before {
+    color: @color-blue1;
+    border: 1px solid @color-blue1;
+    padding: 3px;
+    margin: 3px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+
+.button-group {
+    border: 1px solid rgb(205, 205, 205);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    overflow: auto;
+    display: inline-block;
+}
+
+.button-group > button {
+    float: left;
+    border-top: none;
+    border-left: none;
+    border-right: 1px solid rgb(205, 205, 205);
+    border-bottom: none;
+}
+
+.button-group > button:last-of-type, .button-group > button:only-of-type {
+    border: none;
+}

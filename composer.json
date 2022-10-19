@@ -1,0 +1,29 @@
+{
+  "name": "mpazaran-adobe-commerce/mau-core",
+  "description": "Magento 2 module swiss knife",
+  "require": {
+    "php": "~7.1.0"
+  },
+  "type": "magento2-module",
+  "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+  "authors": [
+    {
+      "name": "Mauricio Pazaran",
+      "email": "mauricio.pazaran@gmail.com",
+      "homepage": "https://www.linkedin.com/in/mauriciopazaran",
+      "role": "Magento Architect"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Mau\\Core\\": ""
+    }
+  }
+}
+

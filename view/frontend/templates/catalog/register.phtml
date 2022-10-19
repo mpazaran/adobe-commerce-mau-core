@@ -1,0 +1,11 @@
+<script>
+    require(["freedom/catalog"], function(FredomCatalog){
+        window.catalogs = {};
+<?php foreach (\Freedom\Core\Catalog\Register::getCatalogs() as $id => $options): ?>
+        window.catalogs['<?= $id?>'] = new FredomCatalog(
+            <?= json_encode($options['constants'])?>,
+            <?= json_encode($options['options'])?>
+        )
+<?php endforeach; ?>
+    });
+</script>

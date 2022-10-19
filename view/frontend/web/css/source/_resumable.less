@@ -1,0 +1,42 @@
+.free-resumable-progress {
+    border: 1px solid @color-blue1;
+    text-align: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 5px 0;
+    display: inline-block;
+    width: calc(100% - 60px);
+    color: #0f5293;
+}
+
+.free-resumable-action {
+    display: inline-block;
+    cursor: pointer;
+    font-size: 20px;
+    position: relative;
+    top: -9px;
+    color: #0F5293;
+}
+
+.free-resumable-drop {
+    border: 1px dashed black;
+    width: 100%;
+    min-height: 250px;
+    cursor: pointer;
+    text-align: center;
+    color: #0f5293;
+    padding: 80px 0;
+    transition: background 1s;
+}
+
+.free-resumable-drop:hover {
+    background: @color-blue1;
+    transition: background 1s;
+}
+
+.free-resumable-drop > .free-resumable-drop-text {
+    margin: 10px 0 0 0;
+    font-size: 20px;
+}

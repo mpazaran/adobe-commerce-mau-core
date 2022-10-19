@@ -1,0 +1,130 @@
+
+<div class="responsive-width" data-bind="visible: show()">
+    <div class="actions-toolbar">
+        <div class="primary" data-bind="foreach: sanitizeActions(getActions())">
+            <button type="button" class="action primary"
+                    data-bind="
+                        click: click.bind($parent),
+                        attr: {
+                            disabled: $parent.actionSearch.loading()
+                        }
+                    ">
+                <span data-bind="
+                    i18n: label? (' ' + label) : '',
+                    css: icon !== false? ('fa fa-' + icon) : ''"></span>
+            </button>
+        </div>
+    </div>
+
+    <!--ko if: actionSearch.count() > 0 -->
+    <div class="pager-container" data-bind="if: showPager">
+        <div class="pager-list">
+            <!--ko if: _.indexOf(actionSearch.pages(), 1) === -1 -->
+            <a class="pager-link" data-bind="text: 1, click: setPage(1), css:{'pager-link-active': 1 == actionSearch.page()}"></a>
+            <!--/ko-->
+            <!--ko foreach: actionSearch.pages() -->
+            <a class="pager-link" data-bind="text: $data, click: $parent.setPage($data), css:{'pager-link-active': $data == $parent.actionSearch.page()}"></a>
+            <!--/ko-->
+            <!--ko if: _.indexOf(actionSearch.pages(), actionSearch.pageCount()) === -1 -->
+            <a class="pager-link" data-bind="text: actionSearch.pageCount(), click: setPage(actionSearch.pageCount()), css:{'pager-link-active': actionSearch.pageCount() == actionSearch.page()}"></a>
+            <!--/ko-->
+        </div>
+    </div>
+    <!--/ko-->
+    <table class="table free-table striped">
+        <thead>
+        <tr>
+            <th></th>
+            <!-- ko foreach: getColumnsDefinition() -->
+                <th data-bind="attr:{class: $parent.sortClass[field] }, click: $parent.setOrder(field)">
+                    <span data-bind="i18n: label"></span>
+                </th>
+            <!-- /ko -->
+        </tr>
+        <tr>
+            <th></th>
+            <!-- ko foreach: { data: getColumnsDefinition(), as: 'column', noChildContext: true} -->
+                <!-- ko if: column.filter === false -->
+                <th></th>
+                <!-- /ko -->
+                <!-- ko if: column.filter !== false -->
+                <th data-bind="template: { name: column.filter.template, data: {list: $parent, column: column}}"></th>
+                <!-- /ko -->
+            <!-- /ko -->
+        </tr>
+        </thead>
+        <!--ko if: actionSearch.count() > 0 -->
+        <tbody data-bind="foreach: { data: models, as: 'model', noChildContext: true}">
+        <tr>
+            <td data-bind="foreach: $parent.sanitizeActions($parent.getRowActions($data))">
+                <a class="action primary"
+                   data-bind="
+                        click: click.bind($parents[1])
+                    ">
+                    <span data-bind="
+                    i18n: label? (' ' + label) : '',
+                    css: icon !== false? ('fa fa-' + icon) : ''"></span>
+                </a>
+            </td>
+            <!-- ko foreach: { data: $parent.getColumnsDefinition(), as: 'column', noChildContext: true} -->
+                <td data-bind="text: $parents[1].renderCell(column, model), attr:{'class' : column.cssClass}"></td>
+            <!-- /ko -->
+        </tr>
+        </tbody>
+        <!--/ko-->
+        <!--ko if: actionSearch.count() === 0 -->
+        <tbody>
+        <tr>
+            <th colspan="100%" class="text-center">
+                <span data-bind="i18n: 'No found records'"></span>
+            </th>
+        </tr>
+        </tbody>
+        <!--/ko-->
+    </table>
+    <!--ko if: actionSearch.count() > 0 -->
+    <div class="pager-container" data-bind="if: showPager">
+        <div class="pager-list">
+            <!--ko if: _.indexOf(actionSearch.pages(), 1) === -1 -->
+            <a class="pager-link" data-bind="text: 1, click: setPage(1), css:{'pager-link-active': 1 == actionSearch.page()}"></a>
+            <!--/ko-->
+            <!--ko foreach: actionSearch.pages() -->
+            <a class="pager-link" data-bind="text: $data, click: $parent.setPage($data), css:{'pager-link-active': $data == $parent.actionSearch.page()}"></a>
+            <!--/ko-->
+            <!--ko if: _.indexOf(actionSearch.pages(), actionSearch.pageCount()) === -1 -->
+            <a class="pager-link" data-bind="text: actionSearch.pageCount(), click: setPage(actionSearch.pageCount()), css:{'pager-link-active': actionSearch.pageCount() == actionSearch.page()}"></a>
+            <!--/ko-->
+        </div>
+    </div>
+    <!--/ko-->
+
+</div>
+<script type="text/html" id="filter-template-numeric">
+
+    <!-- ko if: column.filter.isRange === true -->
+    <input type="number" class="text-right" data-bind="textInput: list.filters[column.filter.keys.from]">
+    <input type="number" class="text-right" data-bind="textInput: list.filters[column.filter.keys.to]">
+    <!--/ko-->
+    <!-- ko if: column.filter.isRange === false -->
+    <input type="number" class="text-right" data-bind="textInput: list.filters[column.filter.keys.simple]">
+    <!--/ko-->
+</script>
+
+<script type="text/html" id="filter-template-present">
+    <select>
+    <option></option>
+    <option value="not_empty" data-bind="i18n: 'No empty'"></option>
+    <option value="is_empty" data-bind="i18n: 'Empty'"></option>
+    </select>"
+</script>
+<script type="text/html" id="filter-template-catalog">
+    <select data-bind="selectedOptions: list.filters[column.filter.keys.simple], attr:{multiple: column.filter.multiple === true}">
+        <option></option>
+        <!-- ko debug: column.catalog, foreach: column.catalog.getOptions() -->
+        <option data-bind="i18n: label, value: value"></option>")
+        <!-- /ko -->
+    </select>
+</script>
+<script type="text/html" id="filter-template-text">
+    <input type="text" class="text-right" data-bind="textInput: list.filters[column.filter.keys.simple]">
+</script>

@@ -1,0 +1,4 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="generic" label="Generic Mail" file="generic.html" type="html" module="FreedomCore_Core" area="frontend"/>
+    <template id="front_notification" label="Frontend Notificacion" file="front_notification.html" type="html" module="Freedom_Core" area="frontend"/>
+</config>

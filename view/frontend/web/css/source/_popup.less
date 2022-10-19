@@ -1,0 +1,39 @@
+.free-popup {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transition: opacity .15s ease-in-out;
+    -moz-transition: opacity .15s ease-in-out;
+    -ms-transition: opacity .15s ease-in-out;
+    -o-transition: opacity .15s ease-in-out;
+    transition: opacity .15s ease-in-out;
+}
+
+.free-content {
+    position: fixed;
+    background: white;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    z-index: 1001;
+}
+
+.free-popup-show {
+    display: flex;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transition: opacity .15s ease-in-out;
+    -moz-transition: opacity .15s ease-in-out;
+    -ms-transition: opacity .15s ease-in-out;
+    -o-transition: opacity .15s ease-in-out;
+    transition: opacity .15s ease-in-out;
+}

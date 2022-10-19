@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Freedom_Core::css/core.css"/>
+        <css src="Freedom_Core::css/fontawesome/all.css"/>
+        <css src="Freedom_Core::css/autoComplete/jquery.auto-complete.css"/>
+    </head>
+    <referenceContainer name="before.body.end">
+        <block name="freedom_core_block_catalog_register" template="Freedom_Core::catalog/register.phtml" />
+    </referenceContainer>
+</page>

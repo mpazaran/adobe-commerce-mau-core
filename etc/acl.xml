@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+  <acl>
+    <resources>
+      <resource id="Magento_Backend::admin">
+        <resource id="Freedom_Core::freedom_document" title="Core">
+          <resource id="Freedom_Core::freedom_document_read" title="Freedom Document Read">
+            <resource id="Freedom_Core::freedom_document_write" title="Freedom Document Write"/>
+          </resource>
+        </resource>
+      </resource>
+    </resources>
+  </acl>
+</config>
